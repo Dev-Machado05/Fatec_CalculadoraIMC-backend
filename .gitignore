@@ -1,0 +1,15 @@
+# node dependencies
+node_modules/
+
+# Environment variables (senhas/tokens)
+.env
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+note.md
+note2.md
