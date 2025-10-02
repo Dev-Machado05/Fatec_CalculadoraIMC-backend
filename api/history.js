@@ -22,54 +22,45 @@ module.exports = async function handler(req, res) {
       
       console.log(`📊 Histórico carregado: ${historyData.length} registros encontrados`);
       
-      res.status(200).json({
-        success: true,
-        data: historyData,
-        source: 'database'
-      });
+      // Retornar dados diretamente (sem wrapper)
+      res.status(200).json(historyData);
     } catch (dbError) {
       console.error('❌ Erro no banco D1, usando dados de exemplo:', dbError.message || dbError);
       
-      // Fallback para dados de exemplo
+      // Fallback para dados de exemplo - ajustando nomes dos campos
       const sampleData = [
         {
           id: 1,
-          user_age: 25,
-          user_sex: "male",
-          user_height: 1.75,
-          user_weight: 70,
-          imc_result: 22.86,
-          imc_class: "Peso Normal",
-          ideal_weight: 70,
-          created_at: "2024-10-01 14:30:25"
+          age: 25,
+          sex: "male",
+          height: 1.75,
+          weight: 70,
+          imc: 22.86,
+          class: "Peso Normal",
+          idealWeight: 70,
+          timestamp: "2024-10-01T14:30:25.000Z"
         },
         {
           id: 2,
-          user_age: 30,
-          user_sex: "female",
-          user_height: 1.65,
-          user_weight: 55,
-          imc_result: 20.2,
-          imc_class: "Peso Normal",
-          ideal_weight: 55,
-          created_at: "2024-10-01 15:00:00"
+          age: 30,
+          sex: "female",
+          height: 1.65,
+          weight: 55,
+          imc: 20.2,
+          class: "Peso Normal",
+          idealWeight: 55,
+          timestamp: "2024-10-01T15:00:00.000Z"
         }
       ];
 
-      res.status(200).json({
-        success: true,
-        data: sampleData,
-        source: 'sample'
-      });
+      // Retornar dados diretamente (sem wrapper)
+      res.status(200).json(sampleData);
       
       console.log(`📊 Fallback ativo: retornando ${sampleData.length} registros de exemplo`);
     }
 
   } catch (err) {
     console.error('💥 Erro crítico no endpoint history:', err.message || err);
-    res.status(500).json({
-      success: false,
-      error: "Erro ao buscar histórico de IMCs"
-    });
+    res.status(500).json([]);
   }
 };
