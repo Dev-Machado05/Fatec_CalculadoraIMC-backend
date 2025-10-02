@@ -4,6 +4,9 @@ node_modules/
 # Environment variables (senhas/tokens)
 .env
 
+# Wrangler local files
+.wrangler/
+
 # Logs
 *.log
 
