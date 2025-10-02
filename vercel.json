@@ -1,11 +1,19 @@
 {
   "version": 2,
-  "functions": {
-    "api/handleImc.js": {
-      "runtime": "@vercel/node"
-    },
-    "api/history.js": {
-      "runtime": "@vercel/node"
+  "builds": [
+    {
+      "src": "api/*.js",
+      "use": "@vercel/node@3.0.0"
     }
-  }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/api/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/api/index.js"
+    }
+  ]
 }
