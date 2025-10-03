@@ -1,6 +1,13 @@
 # 📊 Calculadora de IMC - Backend
 
-API REST para cálculo de Índice de Massa Corporal (IMC) desenvolvida em Node.js com Express, integrada com banco de dados Cloudflare D1 e preparada para deploy na Vercel.
+> **API REST para cálculo de Índice de Massa Corporal (IMC) desenvolvida em Node.js com Express**
+
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white)
+![Express](https://img.shields.io/badge/Express-000000?style=for-the-badge&logo=express&logoColor=white)
+![Cloudflare](https://img.shields.io/badge/Cloudflare_D1-F38020?style=for-the-badge&logo=cloudflare&logoColor=white)
+![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)
+
+Backend da atividade proposta na matéria de PDM (Programação para Dispositivos Móveis), integrada com banco de dados Cloudflare D1 e preparada para deploy na Vercel, tendo como intuito calcular o IMC de uma pessoa.
 
 ## 🚀 Como utilizar
 
@@ -13,10 +20,10 @@ API REST para cálculo de Índice de Massa Corporal (IMC) desenvolvida em Node.j
 ### 1. Instalação
 ```bash
 # Clone o repositório
-git clone <url-do-repositorio>
+git clone https://github.com/Dev-Machado05/Fatec_CalculadoraIMC-backend.git
 
 # Navegue até a pasta do backend
-cd calc_IMC/backend
+cd Fatec_CalculadoraIMC-backend
 
 # Instale as dependências
 npm install
@@ -89,7 +96,7 @@ Calcula o IMC de uma pessoa e salva no banco de dados.
   "class": "Peso Normal",
   "idealWeight": 70,
   "message": "Cálculo realizado com sucesso",
-  "timestamp": "2025-10-02T10:30:00.000Z"
+  "timestamp": "2025-10-03T10:30:00.000Z"
 }
 ```
 
@@ -113,7 +120,7 @@ Retorna o histórico de cálculos de IMC.
     "imc": 22.86,
     "class": "Peso Normal",
     "idealWeight": 70,
-    "timestamp": "2025-10-02T10:30:00.000Z"
+    "timestamp": "2025-10-03T10:30:00.000Z"
   }
 ]
 ```
@@ -122,24 +129,18 @@ Retorna o histórico de cálculos de IMC.
 Endpoint de teste (retorna mensagem simples).
 
 ## 🛠️ Tecnologias
+
+### Backend
 - **Node.js** - Runtime JavaScript
 - **Express** - Framework web
 - **Cloudflare D1** - Banco de dados SQLite serverless
 - **Wrangler** - CLI da Cloudflare para gerenciar D1
 - **Vercel** - Plataforma de deploy serverless
+
+### Ferramentas de Desenvolvimento
 - **CORS** - Middleware para requisições cross-origin
 - **dotenv** - Gerenciamento de variáveis de ambiente
-
-## 🏗️ Arquitetura
-
-### Desenvolvimento Local
-- **index.js** - Servidor Express para desenvolvimento
-- **lib/database.js** - Funções de acesso ao banco D1
-
-### Deploy Serverless (Vercel)
-- **api/handleImc.js** - Função serverless para cálculo de IMC
-- **api/history.js** - Função serverless para histórico
-- **vercel.json** - Configuração de deploy
+- **Git** - Controle de versão
 
 ## 📁 Estrutura do projeto
 ```
@@ -181,6 +182,17 @@ CREATE TABLE imc_calculations (
 );
 ```
 
+## 🎯 Classificação do IMC
+
+| Faixa de IMC | Classificação |
+|--------------|---------------|
+| < 18.5 | Abaixo do peso |
+| 18.5 - 24.9 | Peso Normal |
+| 25.0 - 29.9 | Sobrepeso |
+| 30.0 - 34.9 | Obesidade grau 1 |
+| 35.0 - 39.9 | Obesidade grau 2 |
+| ≥ 40.0 | Obesidade grau 3 |
+
 ## 🚀 Deploy na Vercel
 
 ### 1. Preparação
@@ -212,14 +224,14 @@ O servidor está configurado para aceitar requisições de múltiplas origens:
 - `http://localhost:8080`
 - Domínios de produção da Vercel
 
-## � Segurança
+## 🛡️ Segurança
 - Variáveis de ambiente para credenciais sensíveis
 - Logs sanitizados (sem exposição de dados pessoais)
 - Validação rigorosa de entrada
 - CORS configurado adequadamente
 - `.env` excluído do controle de versão
 
-## �📝 Scripts disponíveis
+## 📝 Scripts disponíveis
 ```bash
 # Desenvolvimento local
 npm start
@@ -261,16 +273,6 @@ const history = await response.json();
 console.log(history);
 ```
 
-## 🏥 Classificação do IMC
-| Faixa de IMC | Classificação |
-|--------------|---------------|
-| < 18.5 | Abaixo do peso |
-| 18.5 - 24.9 | Peso Normal |
-| 25.0 - 29.9 | Sobrepeso |
-| 30.0 - 34.9 | Obesidade grau 1 |
-| 35.0 - 39.9 | Obesidade grau 2 |
-| ≥ 40.0 | Obesidade grau 3 |
-
 ## 🐛 Troubleshooting
 
 ### Problemas comuns:
@@ -297,11 +299,40 @@ console.log(history);
    - Verifique se o domínio frontend está na lista de origens permitidas
    - Configure variáveis de ambiente na Vercel para diferentes origens
 
+## 🤝 Contribuição
+
+1. Fork o projeto
+2. Crie uma branch para sua feature (`git checkout -b feature/AmazingFeature`)
+3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
+4. Push para a branch (`git push origin feature/AmazingFeature`)
+5. Abra um Pull Request
+
+### Padrões de Código
+- Use JavaScript ES6+ 
+- Siga as convenções do ESLint
+- Mantenha funções pequenas e reutilizáveis
+- Documente funções complexas
+
 ## 📄 Licença
+
 Este projeto é de uso acadêmico para a disciplina de PDM da FATEC.
 
-## 👨‍💻 Autor
-**Lucas Machado** - Desenvolvimento Full Stack
+## 👥 Equipe
+
+- **Desenvolvedor Principal**: [Dev-Machado05](https://github.com/Dev-Machado05)
+- **Instituição**: FATEC - Faculdade de Tecnologia
+- **Disciplina**: PDM - Programação para Dispositivos Móveis
+
+## 📞 Contato
+
+- 📧 Email: [Lucas Machado](mailto:dev.lucasmachado205@gmail.com)
+- 🐙 GitHub: [@Dev-Machado05](https://github.com/Dev-Machado05)
+- 🎓 FATEC: [Site Institucional](https://fatec.sp.gov.br/)
 
 ---
-*Projeto desenvolvido com ❤️ para estudos de desenvolvimento mobile e APIs RESTful.*
+
+<div align="center">
+
+**⭐ Se este projeto foi útil para você, considere dar uma estrela!**
+
+</div>
